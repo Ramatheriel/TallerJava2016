@@ -1,10 +1,27 @@
 /*
-Ricardo Meneses Pardo 77148
+ * Universidad de las Americas, A.C.
+ * Licenciatura en Informatica y Tecnologias de la Informacion.
+ * Ricardo Meneses Pardo
+ * 77148
  */
-package AbstractFactory;
+package FactoryMethod;
 
-public class Laptop extends Computadora
+class Laptop extends Computadora
 {
+    private static Laptop laptop;
+    
+    private Laptop()
+    {
+        
+    }
+    
+    static Laptop getInstance()
+    {
+        if(laptop == null)
+            laptop = new Laptop();
+        
+        return laptop;
+    }
 
     @Override
     public void configurar() 

@@ -1,10 +1,27 @@
 /*
-Ricardo Meneses Pardo 77148
+ * Universidad de las Americas, A.C.
+ * Licenciatura en Informatica y Tecnologias de la Informacion.
+ * Ricardo Meneses Pardo
+ * 77148
  */
-package AbstractFactory;
+package FactoryMethod;
 
 public class Desktop extends Computadora
 {
+    private static Desktop desktop;
+    
+    private Desktop()
+    {
+        
+    }
+    
+    static Desktop getInstance()
+    {
+        if(desktop == null)
+            desktop = new Desktop();
+        
+        return desktop;
+    }
 
     @Override
     public void configurar() 

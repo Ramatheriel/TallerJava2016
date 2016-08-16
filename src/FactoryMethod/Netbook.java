@@ -1,10 +1,27 @@
 /*
-Ricardo Meneses Pardo 77148
+ * Universidad de las Americas, A.C.
+ * Licenciatura en Informatica y Tecnologias de la Informacion.
+ * Ricardo Meneses Pardo
+ * 77148
  */
-package AbstractFactory;
+package FactoryMethod;
 
 public class Netbook extends Computadora
 {
+    private static Netbook netbook;
+    
+    private Netbook()
+    {
+        
+    }
+    
+    static Netbook getInstance()
+    {
+        if(netbook == null)
+            netbook = new Netbook();
+        
+        return netbook;
+    }
 
     @Override
     public void configurar() 
