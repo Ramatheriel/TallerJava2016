@@ -8,7 +8,7 @@ package FactoryMethod;
 
 /**
  *
- * @author Ricardo
+ * @author Ramatheriel
  */
 public class Test 
 {
