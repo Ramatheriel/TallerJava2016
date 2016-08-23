@@ -14,7 +14,7 @@ public class Director
 {
     Builder builder;
     
-    void buildAvion()
+    public void buildAvion()
     {
         builder.createAvion();
         builder.buildAlas();
