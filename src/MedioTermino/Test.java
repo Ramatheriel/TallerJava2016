@@ -8,6 +8,7 @@ package MedioTermino;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,6 +44,22 @@ public class Test
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         } catch (BrokenBarrierException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        Semaphore semGeneral = new Semaphore(5);        
+        Semaphore semEmpresarial = new Semaphore(3);
+        Cajero cajero = new General("general");
+        Cajero cajero2 = new Empresarial("empresarial");
+        
+        Cliente[] usuariosGeneral = new Cliente[100];
+        for (int i = 0; i < 100; i++) {
+            usuariosGeneral[i] = new Cliente(i, semGeneral, semEmpresarial, cajero, "general");
+            usuariosGeneral[i].start();
+        }
+        Cliente[] usuariosEmpresarial = new Cliente[50];
+        for (int j = 0; j < 50; j++) {
+            usuariosEmpresarial[j] = new Cliente(j, semGeneral, semEmpresarial, cajero2, "empresarial");
+            usuariosEmpresarial[j].start();
         }
     }
     
